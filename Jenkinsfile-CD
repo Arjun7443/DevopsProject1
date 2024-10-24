@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage("1. Pull Files") {
             steps {
-                sshagent(['my_ec2_creds']) {
+                sshagent(['my_ec2_creds']) {   // install 'ssh agent' plugin & generate 'ssh-agent' pipeline syntax generator
                     echo "Cloning deployment files from GitHub to ${NODE_IP}..."
                     sh """
                         ssh -o StrictHostKeyChecking=no ${EC2_NAME}@${NODE_IP} << EOF
