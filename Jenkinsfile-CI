@@ -35,6 +35,9 @@ pipeline {
         }
 
         stage('Trivy Image Scan') {
+             environment {
+                DOCKER_IMAGE = "arjun7443/ultimate-cicd:${BUILD_NUMBER}"
+                     }
             steps {
                 script { 
                     echo "Scanning Docker image for vulnerabilities..."
