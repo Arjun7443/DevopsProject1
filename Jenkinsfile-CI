@@ -18,10 +18,12 @@ pipeline {
 
         stage('Build and Test') {
             steps {
+                dir("DevopsProject1"{
                 echo 'Listing files...'
                 sh 'ls -ltr'
                 echo 'Building the project and creating a JAR file...'
                 sh 'mvn clean package' // Build the project with Maven
+               }
             }
         }
 
