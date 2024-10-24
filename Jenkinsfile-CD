@@ -3,8 +3,8 @@ pipeline {
     environment {
         GITHUB_REPO = 'https://github.com/Arjun7443/DevopsProject1.git' // Replace with your GitHub repo
         GITHUB_BRANCH = 'main' // Replace with the branch you want to pull from
-        NODE_IP = ""
-        EC2_NAME = ""
+        NODE_IP = "172.31.44.80"
+        EC2_NAME = "ubuntu"
     }
 
     stages {
