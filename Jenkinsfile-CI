@@ -19,7 +19,7 @@ pipeline {
             
             wget https://github.com/aquasecurity/trivy/releases/download/v0.41.0/trivy_0.41.0_Linux-64bit.tar.gz
             tar zxvf trivy_0.41.0_Linux-64bit.tar.gz
-            sudo mv trivy /usr/local/bin/
+            mv trivy /usr/local/bin/
         else
             echo "Trivy already installed."
         fi
