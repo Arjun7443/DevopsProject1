@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: mycontainer
-        image: arjun7443/ultimate-cicd:latest   # replace with your Docker-image pushed on Dockerhub
+        image: arjun7443/ultimate-cicd:replaceImageTag   # rreplaceImageTageplace with your Docker-image pushed on Dockerhub
         ports:
         - containerPort: 8080
