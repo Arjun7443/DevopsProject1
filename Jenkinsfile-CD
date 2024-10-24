@@ -42,7 +42,7 @@ pipeline {
                             cd /home/ubuntu/your-repo-folder/manifests
                             kubectl apply -f deployment.yaml
                             kubectl apply -f service.yaml
-                            kubectl rollout restart deploy
+                            kubectl rollout restart mydeploy
                             kubectl get service
                         EOF
                     """
