@@ -2,6 +2,7 @@ pipeline {
     agent any
       tools {
         git 'Default' // or specify a custom Git installation name if configured
+         }
     
 
     stages {
