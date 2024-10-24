@@ -17,6 +17,7 @@ pipeline {
     steps {
         sh '''
         if ! [ -x "$(command -v trivy)" ]; then
+            sudo apt-get remove trivy
             echo "Installing Trivy..."
             apt update
             apt install wget
