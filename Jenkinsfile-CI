@@ -61,7 +61,7 @@ pipeline {
             steps {
                 script { 
                     echo "Scanning Docker image for vulnerabilities..."
-                    def scanResult = sh(script: "sudo trivy image --exit-code 1 --severity HIGH,CRITICAL ${DOCKER_IMAGE}", returnStatus: true)
+                    def scanResult = sh(script: "trivy image --exit-code 1 --severity HIGH,CRITICAL ${DOCKER_IMAGE}", returnStatus: true)
                     if (scanResult != 0) {
                         echo "Vulnerabilities found in image: ${DOCKER_IMAGE}"
                     } else {
