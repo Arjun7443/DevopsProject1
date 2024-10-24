@@ -60,6 +60,7 @@ pipeline {
             steps {
                 script { 
                     echo "Scanning Docker image for vulnerabilities..."
+                   sh 'trivy --cache-dir /path/to/local/cache image --download-db-only'
                    sh "trivy image ${DOCKER_IMAGE} > scan.txt"
                 }
             }
