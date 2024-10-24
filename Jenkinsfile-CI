@@ -6,6 +6,7 @@ pipeline {
     }
   }
       environment {
+        TRIVY_TOKEN = credentials('github')
         DOCKER_IMAGE = "arjun7443/ultimate-cicd:${BUILD_NUMBER}"
         REGISTRY_CREDENTIALS = credentials('docker-cred') // Reference Docker credentials
            }
@@ -61,7 +62,7 @@ pipeline {
                 script { 
                     echo "Scanning Docker image for vulnerabilities..."
                    sh 'trivy --cache-dir /path/to/local/cache image --download-db-only'
-                   sh "trivy image ${DOCKER_IMAGE} > scan.txt"
+                   sh "TRIVY_TOKEN=${TRIVY_TOKEN} trivy image ${DOCKER_IMAGE} > scan.txt"
                 }
             }
         }
