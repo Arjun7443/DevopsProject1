@@ -5,6 +5,10 @@ pipeline {
       args '-u root --privileged -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon with privileges
     }
   }
+      environment {
+        DOCKER_IMAGE = "arjun7443/ultimate-cicd:${BUILD_NUMBER}"
+        REGISTRY_CREDENTIALS = credentials('docker-cred') // Reference Docker credentials
+           }
       
 
     stages {
@@ -41,10 +45,7 @@ pipeline {
         }
 
         stage('Build Docker Image') {
-            environment {
-                DOCKER_IMAGE = "arjun7443/ultimate-cicd:${BUILD_NUMBER}"
-                REGISTRY_CREDENTIALS = credentials('docker-cred') // Reference Docker credentials
-            }
+            
             steps {
                 script {
                     echo "Building Docker image: ${DOCKER_IMAGE}"
@@ -55,9 +56,7 @@ pipeline {
         }
 
         stage('Trivy Image Scan') {
-             environment {
-                DOCKER_IMAGE = "arjun7443/ultimate-cicd:${BUILD_NUMBER}"
-                     }
+           
             steps {
                 script { 
                     echo "Scanning Docker image for vulnerabilities..."
