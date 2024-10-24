@@ -98,12 +98,7 @@ pipeline {
             }
         }
     }
-                   stage(' Cleanup') {
-            steps {
-                deleteDir() // Clean up the workspace
-            }
-        }
-
+                   
 
 
 
