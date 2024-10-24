@@ -13,6 +13,10 @@ pipeline {
         sh '''
         if ! [ -x "$(command -v trivy)" ]; then
             echo "Installing Trivy..."
+            sudo apt update
+            sudo apt install wget
+
+            
             wget https://github.com/aquasecurity/trivy/releases/download/v0.41.0/trivy_0.41.0_Linux-64bit.tar.gz
             tar zxvf trivy_0.41.0_Linux-64bit.tar.gz
             sudo mv trivy /usr/local/bin/
