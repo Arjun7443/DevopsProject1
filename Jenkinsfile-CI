@@ -98,6 +98,11 @@ pipeline {
             }
         }
     }
+
+
+      stage("deploy in k8's"){
+         steps{
+              
                    
 
 
