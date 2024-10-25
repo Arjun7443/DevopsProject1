@@ -109,6 +109,26 @@ pipeline {
                sh 'kubectl get service'
                 }
            }
+
+     stage('revert image tag back to replaceImageTag') {
+        environment {
+            GIT_REPO_NAME = "DevopsProject1"
+            GIT_USER_NAME = "arjun7443"
+        }
+        steps {
+            withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
+                sh '''
+                    git config user.email "nagarjuna7443@gmail.com"
+                    git config user.name "Nagarjuna"
+                    BUILD_NUMBER=${BUILD_NUMBER}
+                    sed -i "s/${BUILD_NUMBER}/replaceImageTag/g" manifests/deployment.yaml
+                    git add manifests/deployment.yaml
+                    git commit -m "Update deployment image to version ${BUILD_NUMBER}"
+                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+                '''
+            }
+        }
+    }
               
                    
 
