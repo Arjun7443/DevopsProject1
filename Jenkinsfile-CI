@@ -63,7 +63,7 @@ pipeline {
                 script { 
                     echo "Scanning Docker image for vulnerabilities..."
                    
-                   sh "trivy --cache-dir /path/to/cache-dir ${DOCKER_IMAGE} > scan.txt"
+                   sh "trivy --cache-dir /path/to/cache-dir image ${DOCKER_IMAGE} > scan.txt"
                 }
             }
         }
