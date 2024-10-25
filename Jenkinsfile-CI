@@ -102,6 +102,7 @@ pipeline {
 
       stage("deploy in k8's"){
          steps{
+               sh 'cd man
               
                    
 
